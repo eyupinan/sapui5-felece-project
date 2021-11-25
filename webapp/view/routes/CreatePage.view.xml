@@ -1,0 +1,86 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" 	xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form" 	xmlns:core="sap.ui.core" controllerName="felece.challengeuserapp.controller.routes.CreatePage">
+  <Page id="formPage" title="{i18n>createPageTitle}">
+					<content>
+						<f:SimpleForm id="SimpleFormToolbar"
+							editable="true"
+							layout="ResponsiveGridLayout"
+							labelSpanXL="4"
+							labelSpanL="3"
+							labelSpanM="4"
+							labelSpanS="12"
+							adjustLabelSpan="false"
+							emptySpanXL="0"
+							emptySpanL="4"
+							emptySpanM="0"
+							emptySpanS="0"
+							columnsXL="2"
+							columnsL="1"
+							columnsM="1"
+							singleContainerFullSize="false"
+							ariaLabelledBy="Title1" >
+							<f:toolbar>
+								<Toolbar id="TB1">
+									<Title id="Title1" text="User Information"/>
+									<ToolbarSpacer />
+									<Button type="Accept"
+											text="{i18n>saveButton}"
+											press="save">
+										<layoutData>
+											<FlexItemData growFactor="1" />
+										</layoutData>
+									</Button>
+									<Button type="Reject"
+											text="{i18n>cancelButton}"
+											press="navToUserTable">
+										<layoutData>
+											<FlexItemData growFactor="1" />
+										</layoutData>
+									</Button>
+								</Toolbar>
+							</f:toolbar>
+							<f:content>
+								<Label text="{i18n>name}" />
+								<Input value="{formModel>/pickedUser/name}"/>
+								<Label text="{i18n>surname}" />
+								<Input value="{formModel>/pickedUser/surname}" />
+								<Label text="{i18n>tck}" />
+								<Input value="{formModel>/pickedUser/tck}" />
+								<Label text="{i18n>phone}" />
+								<Input value="{formModel>/pickedUser/phone}"/>
+								<Label text="{i18n>address}" />
+								<TextArea value="{formModel>/pickedUser/address}">
+									<layoutData>
+										<l:GridData span="XL2 L5 M3 S8" />
+									</layoutData>
+								</TextArea>
+								<Label text="{i18n>email}" />
+								<Input value="{formModel>/pickedUser/email}" />
+								<Label text="{i18n>country}" />
+								<Select id="country" selectedKey="{formModel>/pickedUser/country}" items="{formModel>/countries}" change="changeCities">
+									<items>
+										<core:Item text="{formModel>name}" key="{formModel>key}"/>
+									</items>
+								</Select>
+								<Label text="{i18n>city}" />
+								<Select id="city" selectedKey="{formModel>/pickedUser/city}" items="{formModel>/shownCities}">
+									<items>
+										<core:Item text="{formModel>name}" key="{formModel>name}"/>
+									</items>
+								</Select>
+								<Label text="{i18n>gender}" />
+								<RadioButtonGroup id="genderRadio" columns="5" class="sapUiMediumMarginBottom" select="radioButtonHandler" >
+										<RadioButton id="maleRadioButton" text="{i18n>genderMale}"/>
+										<RadioButton id="femaleRadioButton" text="{i18n>genderFemale}" />
+								</RadioButtonGroup>
+								<Label text="{i18n>birthDate}" />
+								<DatePicker
+									id="birth"
+									value="{formModel>/pickedUser/birthDate}" valueFormat="yyyy-MM-dd" displayFormat="long"
+									change="handleChange"
+									class="sapUiSmallMarginBottom"/>
+							</f:content>
+						</f:SimpleForm>
+					</content>
+				</Page>
+</mvc:View>

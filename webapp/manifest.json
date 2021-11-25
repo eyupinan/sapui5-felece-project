@@ -1,0 +1,109 @@
+{
+	"_version": "1.7.0",
+	"sap.app": {
+		"id": "felece.challengeuserapp",
+		"type": "application",
+		"i18n": "i18n/i18n.properties",
+		"applicationVersion": {
+			"version": "1.0.0"
+		},
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"sourceTemplate": {
+			"id": "ui5template.basicSAPUI5ApplicationProject",
+			"version": "1.40.12"
+		}
+	},
+
+	"sap.ui": {
+		"technology": "UI5",
+		"icons": {
+			"icon": "",
+			"favIcon": "",
+			"phone": "",
+			"phone@2": "",
+			"tablet": "",
+			"tablet@2": ""
+		},
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		},
+		"supportedThemes": [
+			"sap_hcb",
+			"sap_belize"
+
+		]
+	},
+
+	"sap.ui5": {
+		"rootView": {
+			"viewName": "felece.challengeuserapp.view.Main",
+			"type": "XML"
+		},
+		"dependencies": {
+			"minUI5Version": "1.30.0",
+			"libs": {
+				"sap.ui.core": {},
+				"sap.m": {},
+				"sap.ui.layout": {},
+				"sap.ushell": {},
+				"sap.collaboration": {},
+				"sap.ui.comp": {},
+				"sap.uxap": {}
+			}
+		},
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "felece.challengeuserapp.i18n.i18n"
+				}
+			}
+		},
+		"resources": {
+			"css": [{
+				"uri": "css/style.css"
+			}]
+		},
+		"routing": {
+		      "routes": {
+		        "create": {
+		          "pattern": "createNew/:path:",
+		          "target": "createNewTarget"
+		          
+		        },
+		        "users": {
+		          "pattern": "",
+		          "target": "UsersTarget"
+		        }
+		      },
+		      "targets": {
+					"createNewTarget": {
+						"viewPath": "felece.challengeuserapp.view.routes",
+						"viewName": "CreatePage",
+		        		"controlId": "myApp",
+		        		"viewLevel" : 2
+					},
+					"UsersTarget": {
+						"viewPath": "felece.challengeuserapp.view.routes",
+						"viewName": "UsersTable",
+		        		"controlId": "myApp",
+		        		"viewLevel" :1
+					}
+				},
+				"config": {
+				"routerClass": "sap.m.routing.Router",
+				"viewType": "XML",
+				"viewPath": "felece.challengeuserapp.view",
+				"controlId": "myApp",
+				"controlAggregation": "pages"
+			  }
+	    }
+	}
+}

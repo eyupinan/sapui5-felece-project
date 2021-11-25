@@ -1,0 +1,122 @@
+<mvc:View 
+	controllerName="felece.challengeuserapp.controller.routes.UsersTable"
+  	xmlns="sap.ui.table"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:u="sap.ui.unified"
+	xmlns:c="sap.ui.core"
+	xmlns:m="sap.m"
+	height="100%">
+	<m:Page
+		showHeader="false"
+		enableScrolling="false"
+		class="sapUiContentPadding">
+		<m:content>
+			<Table id="table1"
+				rows="{userModel>/users}"
+				selectionMode="SingleSelect"
+				visibleRowCount="12"
+				ariaLabelledBy="title">
+				<extension>
+					<m:OverflowToolbar >
+						<m:Title id="title" text="Users"/>
+						<m:ToolbarSpacer/>
+						<m:Select id="filterType" selectedKey="{i18n>name}">
+							<c:Item text="{i18n>name}" key="name"/>
+							<c:Item text="{i18n>surname}" key="surname"/>
+							<c:Item text="{i18n>tck}" key="tck"/>
+							<c:Item text="{i18n>phone}" key="phone"/>
+							<c:Item text="{i18n>address}" key="address"/>
+							<c:Item text="{i18n>country}" key="country"/>
+							<c:Item text="{i18n>city}" key="city"/>
+							<c:Item text="{i18n>email}" key="email"/>
+							<c:Item text="{i18n>gender}" key="gender"/>
+								</m:Select>
+						<m:SearchField
+							id="searchField"
+							width="20%" liveChange="liveChange"
+							placeholder="{i18n>searchFieldPlaceholder}"
+							/>
+						<m:Button
+							type ="Default"
+							text="{i18n>createNewButton}"
+							press="navToCreatePage"/>
+						<m:Button
+							type ="Reject"
+							icon = "sap-icon://delete"
+							press="deleteSelectedItems"/>
+					</m:OverflowToolbar>
+				</extension>
+
+				<columns>
+					<Column width="7rem">
+						<m:Label text="{i18n>name}" />
+						<template>
+							<m:Text text="{userModel>name}"/>
+						</template>
+					</Column>
+					<Column width="5rem">
+						<m:Label text="{i18n>surname}" />
+						<template>
+							<m:Text text="{userModel>surname}"/>
+						</template>
+					</Column>
+					<Column width="7rem">
+						<m:Label text="{i18n>tck}" />
+						<template>
+							<m:Label text="{userModel>tck}"/>
+						</template>
+					</Column>
+					<Column width="6rem" hAlign="End">
+						<m:Label text="{i18n>phone}" />
+						<template>
+							<m:Label text="{userModel>phone}" />
+						</template>
+					</Column>
+					<Column width="13rem">
+						<m:Label text="{i18n>address}" />
+						<template>
+							<m:Label text="{userModel>address}" hover="onmouseover"/>
+						</template>
+					</Column>
+					<Column width="4rem">
+						<m:Label text="{i18n>country}" />
+						<template>
+							<m:Label text="{userModel>country}" />
+						</template>
+					</Column>
+					<Column width="6rem">
+						<m:Label text="{i18n>city}" />
+						<template>
+							<m:Label text="{userModel>city}" />
+						</template>
+					</Column>
+					<Column width="11rem">
+						<m:Label text="{i18n>email}" />
+						<template>
+							<m:Label text="{userModel>email}"/>
+						</template>
+					</Column>
+					<Column width="4rem">
+						<m:Label text="{i18n>gender}" />
+						<template>
+							<m:Label text="{userModel>gender}" />
+						</template>
+					</Column>
+					<Column width="7rem">
+						<m:Label text="{i18n>birthDate}" />
+						<template>
+							<m:Label text="{userModel>birthDate}" />
+						</template>
+					</Column>
+					<Column width="6rem">
+						<m:Label text="Action" />
+						<template>
+							<m:Button text="{i18n>updateButton}" press="updateRow"/>
+						</template>
+					</Column>
+				</columns>
+			</Table>
+
+		</m:content>
+	</m:Page>
+</mvc:View>
